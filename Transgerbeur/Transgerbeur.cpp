@@ -1,8 +1,9 @@
 #include<stdio.h>
-
-int main()
+#include<iostream>
+using namespace std;
+void menu()
 {
-
+	cout << "Bienvenue dans le Transgerbeur";
 
 
 }
