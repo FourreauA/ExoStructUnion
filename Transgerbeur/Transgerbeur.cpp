@@ -1,14 +1,13 @@
 #include<stdio.h>
 #include<iostream>
+
 using namespace std;
 
-
-enum EEtat {vide, palette, rouleau };
+enum EEtat { vide, palette, rouleau };
 
 struct SPalette {
 	int poids;
 	char reference[20];
-
 };
 
 struct SRouleau {
@@ -16,10 +15,6 @@ struct SRouleau {
 	int numero;
 };
 
-union UContenu {
-	SPalette pal;
-	SRouleau roul;
-};
 
 struct SCasier {
 	int px;
@@ -28,14 +23,23 @@ struct SCasier {
 	EEtat etat;
 };
 
-int main()
+
+union UContenu {
+	SPalette pal;
+	SRouleau roul;
+};
+
+
+
+void main()
 {
 	cout << "Bienvenue dans le Transgerbeur";
 	SCasier tabCasier[9];
 	SRouleau  ro1;
 	SPalette pa1;
-	pa1.poids = 40;
-	strcpy_s(pa1.reference, "Attila veut mortis"); // ignisalisation des chaine de caractere
+	UContenu cont1;
+	pa1.poids = 20;
+	strcpy_s(pa1.reference, "The ric veut djin"); // ignisalisation des chaine de caractere
 	EEtat etatC1;
 	etatC1 = vide;
 	cont1.pal = pa1;
@@ -47,5 +51,6 @@ int main()
 	c1.px = 2;
 	c1.py = 3;
 	c2.cont = cont1;
-
+	tabCasier[0] = c1;
+	tabCasier[2] = c2;
 }
